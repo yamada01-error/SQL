@@ -1,34 +1,26 @@
-const Database = require('better-sqlite3');
-
-const db = new Database('sistema_passagens.db');
-
-db.exec(`
- create table if not exists companhia (
- id integer primary key autoincrement, 
- nome text not null,
- anofundacao integer
+CREATE TABLE IF NOT EXISTS COMPANHIA (
+ ID INTEGER PRIMARY KEY AUTOINCREMENT, 
+ NOME TEXT NOT NULL,
+ ANOFUNDACAO INTEGER
 );
 
- create table if not exists cupom (
- id integer primary key autoincrement, 
- idCompanhia integer, 
- codigo text not null,
- percentual real not null,
-numerocupom integer 
-codigo text not null, 
-foreign key (idCompanhia) references companhia(id)
+CREATE TABLE IF NOT EXISTS CUPOM (
+ ID INTEGER PRIMARY KEY AUTOINCREMENT, 
+ IDCOMPANHIA INTEGER, 
+ CODIGO TEXT NOT NULL,
+ PERCENTUAL REAL NOT NULL,
+ NUMEROCUPOM INTEGER, 
+ FOREIGN KEY (IDCOMPANHIA) REFERENCES COMPANHIA(ID)
 );
 
-create table if not exists trecho (
-id INTEGER primary key autoincrement,
-idCompanhia  integer, 
-origem text not null,
-destino text not null,
-valor real not null, 
-numeropassagens integer,
-foreign key (idCompanhia) references companhia(id)
+CREATE TABLE IF NOT EXISTS TRECHO (
+ ID INTEGER PRIMARY KEY AUTOINCREMENT,
+ IDCOMPANHIA INTEGER, 
+ ORIGEM TEXT NOT NULL,
+ DESTINO TEXT NOT NULL,
+ VALOR REAL NOT NULL, 
+ NUMEROPASSAGENS INTEGER,
+ FOREIGN KEY (IDCOMPANHIA) REFERENCES COMPANHIA(ID)
 );
-`);
-
 
 module.exports = db;
