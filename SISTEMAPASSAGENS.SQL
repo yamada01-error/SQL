@@ -1,3 +1,8 @@
+const Database = require('better-sqlite3');
+
+const db = new Database('sistema_passagens.db');
+
+db.exec(`
 CREATE TABLE IF NOT EXISTS COMPANHIA (
  ID INTEGER PRIMARY KEY AUTOINCREMENT, 
  NOME TEXT NOT NULL,
