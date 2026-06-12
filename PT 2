@@ -1,6 +1,0 @@
-trechos.forEach(t => {
-        console.log(`[${t.id}] ${t.origem} → ${t.destino} | R$ ${t.valor.toFixed(2)} | ${t.numeroPassagens} passagem(ns) | ${t.nomeCompanhia}`);
-    });
-
-    return trechos;
-}
